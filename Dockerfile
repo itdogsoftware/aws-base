@@ -3,7 +3,7 @@ FROM debian:bullseye
 LABEL authors = "Roy To <roy.to@itdogsoftware.co>"
 
 # Install library & necessary service
-RUN apt-get update -y && apt-get install curl postgresql-client mariadb-client -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install curl unzip postgresql-client mariadb-client -y && rm -rf /var/lib/apt/lists/*
 
 # Add aws-cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install && rm awscliv2.zip
