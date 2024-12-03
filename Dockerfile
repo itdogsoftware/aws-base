@@ -2,9 +2,8 @@ FROM debian:bullseye
 
 LABEL authors = "Roy To <roy.to@itdogsoftware.co>"
 
-
 # Install library & necessary service
-RUN dpkg --add-architecture arm64 && apt-get update -y && apt-get install curl unzip git gpg openssh-client docker.io libc6:arm64 postgresql-client mariadb-client -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install curl unzip git gpg openssh-client docker.io postgresql-client mariadb-client -y && rm -rf /var/lib/apt/lists/*
 
 # add docker-compose plugin
 RUN curl -SL "https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
@@ -15,5 +14,3 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv
 # Add nodejs
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash && bash -c "source ~/.bashrc && nvm install 20"
 
-RUN ls /usr/local/bin/docker*
-RUN docker-compose || true
