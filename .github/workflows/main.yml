@@ -37,7 +37,6 @@ jobs:
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
       - name: Build and push Docker image
         run: |
-          docker build --tag itdogsoftware/aws-base:${{ github.ref_name }} --tag itdogsoftware/aws-base:latest --push .
-          docker push itdogsoftware/aws-base:${{ github.ref_name }}
-          docker push itdogsoftware/aws-base:latest
+          docker buildx build --tag itdogsoftware/aws-base:${{ github.ref_name }} --tag itdogsoftware/aws-base:latest --push .
+
 
