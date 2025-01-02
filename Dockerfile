@@ -1,6 +1,6 @@
 FROM debian:bullseye
 
-LABEL authors = "Roy To <roy.to@itdogsoftware.co>"
+LABEL authors="Roy To <roy.to@itdogsoftware.co>"
 
 # Install library & necessary service
 RUN apt-get update -y && apt-get install curl unzip git gpg openssh-client docker.io postgresql-client mariadb-client -y && rm -rf /var/lib/apt/lists/*
