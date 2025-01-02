@@ -28,7 +28,7 @@ jobs:
         with:
           install: true
       - name: Build Docker image
-        run: docker build --tag itdogsoftware/aws-base:${{ github.sha }} .
+        run: docker buildx build --tag itdogsoftware/aws-base:${{ github.sha }} --load .
 
   release:
     if: ${{ github.event.inputs.job == 'release' }}
